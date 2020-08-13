@@ -62,21 +62,21 @@ console.log(reviews[5].feedback);
 
 /* Task 4: Add a new rating with your (fictitious) opinions of the restaurant in the same format as the reviews above. */
 
-reviews.push({name: "Tyler", rating: 5, feedback: "Best food this side of Alaska"});
+reviews.unshift({name: "Tyler", rating: 5, feedback: "Best food this side of Alaska"});
 
 console.log("");
 console.log("Task 4:");
 
-console.log(reviews[reviews.length -1]);
+console.log(reviews[0]);
 
 /* Task 5: Add the following feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays" */
 
-reviews[7].feedback = "this place is chill with really cool people, great for getting work done on weekdays";
+reviews[reviews.length -1].feedback = "this place is chill with really cool people, great for getting work done on weekdays";
 
 console.log("");
 console.log("Task 5:");
 
-console.log(reviews[7]);
+console.log(reviews[reviews.length -1]);
 
 /*  Task 6: Write a function to return a review based on the index of the review in the array.
 
@@ -91,8 +91,15 @@ and should return a string in the format `{name} gave the restaurant a {rating},
  * it will return `Daniela gave the restaurant a 5 star review and their feedback was: Beautiful atmosphere and wonderful vegan options!`
 */
 function getReviewByIndex(reviews, index) {
-    /* code here */
+    rev = reviews[index]
+    return `${rev.name} gave the restaurant a ${rev.rating} star review and their feedback was: ${rev.feedback}`
+
   }
+
+console.log("");
+console.log("Task 6:");
+
+console.log(getReviewByIndex(reviews, 1)); // Added my custom review to the front, which is why 1 returns Daniela instead of 0
   
 
 /* Task 7: Write a function to get information about the most recent review called `getLastReview`
@@ -104,10 +111,14 @@ and should return a string in the format `name} gave the restaurant a {rating}, 
 
 For example, if getLastReview is invoked passing the reviews array it will return `Reyna gave the restaurant a 3.5 star review and their feedback was: "this place is chill with really cool people, great for getting work done on weekdays"`.
 */
-function getLastReview(/* code here */) {
-    /* code here */
+function getLastReview(allReviews) {
+    rev = allReviews[allReviews.length - 1];
+    return `${rev.name} gave the restaurant a ${rev.rating} star review and their feedback was: ${rev.feedback}`
   } 
 
+console.log("");
+console.log("Task 7:");
+console.log(getLastReview(reviews));
 
 ///////////////🍔☕️🍽 STRETCH🍔☕️🍽////////////////////
 
