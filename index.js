@@ -28,18 +28,18 @@ and should return a number.
 
 For example, burger.discount("teacher") would return 13.5 and burger.discount("public") would return 16.2*/
 
-burger.discount = function(string) {
-  if (string === "teacher" || string === "student") {
-    return(`Cost for ${string} is $${this.price * 0.75}`);
-  } else if (string === "public") {
-    return(`Cost for ${string} is $${this.price * 0.9}`);
+function discount(string, food) {
+    if (string === "teacher" || string === "student") {
+      return(`Cost for ${string} is $${food.price * 0.75}`);
+    } else if (string === "public") {
+      return(`Cost for ${string} is $${food.price * 0.9}`);
   }
 }
 
 console.log("");
 console.log("Task 2:");
 
-console.log(burger.discount("public"));
+console.log(discount("public", burger));
 
 
 ///////////////Reviews (MVP)///////////////////
@@ -134,13 +134,23 @@ console.log(getLastReview(reviews));
     {name:"Lauren", rating: 4, feedback: "Absolutely love that they have karaoke Fridays! Food and drink selection is okay."}]
 */
 
- function getReviewByRating(/* code here */) {
-    /* code here */
+function getReviewByRating(array, rating) {
+  filteredReviews = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].rating >= rating && array[i].rating < (rating + 1)) {
+      filteredReviews.push(array[i]);
+    }
   }
+  return filteredReviews;
+}
 
-  
+console.log("");
+console.log("Stretch 1:");
+
+console.log(getReviewByRating(reviews, 4));
+
 /** STRETCH 2: Write a function called 'getLongestReview' that returns an array containing all reviews longer than 15 words. 
-  
+
 Your function should accept: 
 
   (1) An array of objects
@@ -152,9 +162,22 @@ and should return an array of objects.
     {name: "Brett", rating: 3, feedback: "great selection of snacks and a nice cafe area to get work done during the day."},
     {name: "Julius", rating: 2, feedback: "I was largely unimpressed by this venue. Nothing special on the menu and too expensive. The atmosphere is polarizing, and not for me, but I think some would like it." }]
 */
-  function getLongReviews(/* code here */) {
-    /* code here */
+  
+function getLongReviews(array) {
+  let reviewArray = []
+    for(let i=0; i < array.length; i++) {
+      let review = array[i].feedback.split(' ');
+      if(review.length > 15) {
+        reviewArray.push(array[i]);
+    }
   }
+  return reviewArray
+}
+
+console.log("");
+console.log("Stretch 2:");
+
+console.log(getLongReviews(reviews));
   
 
 /* STRETCH 3:  This challenge is not related to the data above! 
@@ -177,7 +200,6 @@ The returned object should have the following characteristics:
 
 function carMaker(/* code here */) {
     /* code here */
-    
 }
 
 // test commit
